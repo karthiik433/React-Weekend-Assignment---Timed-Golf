@@ -57,6 +57,7 @@ class Timer extends React.Component {
       if(this.state.x===250 && this.state.y===250){
         console.log("end");
         clearInterval(this.state.id);
+        document.removeEventListener("keydown",this.moveBall);
       }
     }
   }
