@@ -36,7 +36,7 @@ class Timer extends React.Component {
   }
   moveBall(evnt){
     if(this.state.renderBall){
-      console.log(evnt);
+     // console.log(evnt);
       if(evnt.keyCode === 37){
         this.setState({
           x:this.state.x - 5,
@@ -55,7 +55,7 @@ class Timer extends React.Component {
         })
       }
       if(this.state.x===250 && this.state.y===250){
-        console.log("end");
+        //console.log("end");
         clearInterval(this.state.id);
         document.removeEventListener("keydown",this.moveBall);
       }
@@ -65,16 +65,16 @@ class Timer extends React.Component {
   render() {
     return (
  <>
-  {this.state.renderBall ? 
+   {this.state.renderBall ? 
    <div className="ball"
    style={{
      position: "absolute",
      top: this.state.y+"px",
      left: this.state.x+"px"
-   }} ></div> : <button className="start" onClick={this.ballAppear}>start</button>  
-}
-{<div className="heading-timer">{this.state.time}</div>}
-<div className="hole"></div>
+   }}></div> : (<button className="start" onClick={this.ballAppear}>start</button>)
+  }
+  <div className="heading-timer">{this.state.time}</div>
+  <div className="hole"></div>
 </>
     );
   }
