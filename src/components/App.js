@@ -21,6 +21,13 @@ class Timer extends React.Component {
   componentWillUnmount() {
     document.removeEventListener("keydown",this.moveBall);
   }
+  componentDidUpdate(){
+    if(this.state.x===250 && this.state.y===250){
+      //console.log("end");
+      clearInterval(this.state.id);
+      document.removeEventListener("keydown",this.moveBall);
+    }
+  }
 
   ballAppear() {
     //console.log(this.state.renderBall);
@@ -54,11 +61,6 @@ class Timer extends React.Component {
           y : this.state.y + 5,
         })
       }
-      if(this.state.x===250 && this.state.y===250){
-        //console.log("end");
-        clearInterval(this.state.id);
-        document.removeEventListener("keydown",this.moveBall);
-      }
     }
   }
 
@@ -73,8 +75,9 @@ class Timer extends React.Component {
      left: this.state.x+"px"
    }}></div> : (<button className="start" onClick={this.ballAppear}>start</button>)
   }
-  <div className="heading-timer">{this.state.time}</div>
-  <div className="hole"></div>
+    <div className="heading-timer">{this.state.time}</div>
+    <div className="hole"></div>
+  
 </>
     );
   }
